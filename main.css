@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+}
+.blind {
+    display: none;
+}
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+#header {
+    flex: 1;
+    max-width: 350px;
+    /* background-color: red; */
+}
+#logo {
+    width: auto;
+    height: 100px;
+}
+.uplist {
+    display: flex;
+    height: 70px;
+    background-color: rgb(255, 255, 230);
+    border: 1px solid lightgray;
+}
+.time {
+    flex: 1;
+    text-align: center;
+    line-height: 24px;
+    padding: 10px 5px;
+    border-right: 3px dotted grey;
+}
+.content {
+    padding: 5px 15px;
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+}
+.id {
+    font-size: 26px;
+    margin-bottom: 2px;
+}
+.preview {
+    color: gray;
+    overflow: hidden;
+}
+#main {
+    flex: 2;
+    background-color: blue;
+}
