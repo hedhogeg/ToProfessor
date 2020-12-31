@@ -56,6 +56,11 @@ body {
 #content-info {
   height: 50px;
 }
+#content-info span {
+  vertical-align: bottom;
+  color: grey;
+  font-size: 12px;
+}
 #content-name {
   width: 200px;
   height: 50px;
@@ -66,7 +71,7 @@ body {
   outline: none;
 }
 #content-pw {
-  margin: 0 20px;
+  margin: 0 5px 0 20px;
   vertical-align: bottom;
 }
 #content-pw:focus {
@@ -87,6 +92,9 @@ body {
   height: 80%;
 }
 #content-description {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
   resize: none;
   width: 100%;
   height: 100%;
