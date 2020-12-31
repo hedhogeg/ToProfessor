@@ -2,6 +2,22 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var qs = require('querystring');
+var mysql = require('mysql');
+
+var db = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'me',
+    password : '123456',
+    database : 'my_db'
+});
+db.connect();
+
+db.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+    if (error) throw error;
+    console.log('The solution is: ', results[0].solution);
+});
+
+db.end();
 
 var server = http.createServer(function (request, response){
     var _url = request.url;
