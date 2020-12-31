@@ -21,16 +21,40 @@ var server = http.createServer(function (request, response){
 
 
     if (pathname === '/'){
-        fs.readFile(`./main.html`, 'utf-8', function (err, main){
+        fs.readFile(`./main.html`, 'utf-8', function (err, data){
             response.writeHead(200, {'Content-Type' : 'text/html'});
-            response.end(main);
+            response.end(data);
         })
     }
     else if (pathname === '/main.css'){
-        fs.readFile(`./main.css`, 'utf-8', function (err, main){
+        fs.readFile(`./main.css`, 'utf-8', function (err, data){
             response.writeHead(200, {'Content-Type' : 'text/css'});
-            response.end(main)
+            response.end(data)
         })
+    }
+    else if (pathname === '/page'){
+        fs.readFile(`./page.html`, 'utf-8', function (err, data){
+            //
+            //이름, 파일 리스트 data 에 삽입
+            //
+            response.writeHead(200, {'Content-Type' : 'text/html'});
+            response.end(data);
+
+        })
+    }
+    else if (pathname === '/createPage'){
+        //
+        //
+        //
+        response.writeHead(302);// page 방금 쓴 파일로 이동
+        response.end();
+    }
+    else if (pathname === '/deletePage'){
+        //
+        //
+        //
+        response.writeHead(302);// main 이동
+        response.end();
     }
     else {
         response.writeHead(404);
