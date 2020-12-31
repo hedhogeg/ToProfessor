@@ -30,14 +30,34 @@
     </aside>
     <main id="main">
         <h2 class="blind">글작성</h2>
-        <div id="content-info">
-            <input type="text" placeholder="NAME" id="content-name"/>
-            <input type="text" placeholder="password" id="content-pw"/>
-            <button id="content-submit">Write</button>
-        </div>
-        <div id="content-content">
-            <textarea id="content-description"></textarea>
-        </div>
+        <form action="/" method="POST" class="content-form">
+          <div id="content-info">
+              <input type="text" placeholder="NAME" id="content-name"/>
+              <input type="text" placeholder="password" id="content-pw"/>
+              <input type="submit" value="작성" id="content-submit"/>
+          </div>
+          <div id="content-content">
+              <textarea id="content-description"></textarea>
+          </div>
+        </form>
     </main>
 </body>
+<script>
+const form = document.querySelector(".content-form")
+const inputName = form.querySelector("#content-name")
+const inputPW = form.querySelector("#content-pw")
+function handlekeydown() {
+  if (event.keyCode == 13) {
+    event.preventDefault()
+  }
+}
+function enterlock() {
+  inputName.addEventListener("keydown",handlekeydown)
+  inputPW.addEventListener("keydown",handlekeydown)
+}
+function init() {
+  enterlock()
+}
+init()
+</script>
 </html>
