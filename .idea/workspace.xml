@@ -33,7 +33,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../web2_node_learn" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -65,6 +65,9 @@
       <workItem from="1609375179125" duration="305000" />
       <workItem from="1609375532398" duration="50000" />
       <workItem from="1609389268083" duration="3042000" />
+      <workItem from="1609421115382" duration="48000" />
+      <workItem from="1609421987949" duration="2127000" />
+      <workItem from="1609469490554" duration="4067000" />
     </task>
     <task id="LOCAL-00001" summary="feat:server create">
       <created>1609075735604</created>
@@ -90,7 +93,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="server_develop_01" />
+                        <option value="develop" />
                       </list>
                     </value>
                   </entry>
