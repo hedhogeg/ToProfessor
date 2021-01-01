@@ -12,6 +12,8 @@ body {
   height: 100vh;
 }
 #aside {
+  min-width: 250px;
+  max-width: 400px;
   flex: 1;
   border-right: 1px solid black;
 }
@@ -43,10 +45,15 @@ body {
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 2px;
+  width: 163.2px;
+  height: 34px;
+  overflow: hidden;
 }
 .preview {
   color: gray;
   overflow: hidden;
+  width: 163.2px;
+  height: 21.33px;
 }
 #main {
   flex: 3;
