@@ -11,22 +11,22 @@
       <h1 class="blind">To.Professor</h1>
       To.Professor LOGO img<!--for layout setting-->
     </div>
-    <section id="list"><!--for layout setting fromfrom-->
+    <section id="list">
       <h2 class="blind">글목록</h2>
       <div class="uplist">
         <div class="time">
-          21.01.01<br>12:21
+          <br>
         </div>
-        <div class="content">
+        <div class="content" id="js-content">
           <div class="id">
-            hedhogeg
+            How To Use
           </div>
           <div class="preview">
-            hello, this is first letter. but I wanna write a lot contents
+            About ToProfessor
           </div>
         </div>
       </div>
-    </section><!--for layout setting toto-->
+    </section>
   </aside>
   <main id="main">
     <h2 class="blind">글작성</h2>
@@ -42,23 +42,40 @@
       </div>
     </form>
   </main>
+  <div id="how-to-use" class="hide">
+    <span class="js-exit exit">✖</span>
+  </div>
 </body>
 <script>
-const form = document.querySelector(".content-form")
-const inputName = form.querySelector("#content-name")
-const inputPW = form.querySelector("#content-pw")
-function handlekeydown() {
-  if (event.keyCode == 13) {
-    event.preventDefault()
+  const form = document.querySelector(".content-form")
+  const inputName = form.querySelector("#content-name")
+  const inputPW = form.querySelector("#content-pw")
+  const howToUse = document.querySelector("#how-to-use")
+  const content = document.querySelector("#js-content")
+  const exit = howToUse.querySelector(".js-exit")
+  function handleOpen() {
+    howToUse.classList.remove("hide")
   }
-}
-function enterlock() {
-  inputName.addEventListener("keydown",handlekeydown)
-  inputPW.addEventListener("keydown",handlekeydown)
-}
-function init() {
-  enterlock()
-}
-init()
+  function handleExit() {
+    howToUse.classList.add("hide")
+  }
+  function handleHowTo() {
+    content.addEventListener("click",handleOpen)
+    exit.addEventListener("click",handleExit)
+  }
+  function handleKeyDown() {
+    if (event.keyCode == 13) {
+      event.preventDefault()
+    }
+  }
+  function enterlock() {
+    inputName.addEventListener("keydown",handleKeyDown)
+    inputPW.addEventListener("keydown",handleKeyDown)
+  }
+  function init() {
+    enterlock()
+    handleHowTo()
+  }
+  init()
 </script>
 </html>
