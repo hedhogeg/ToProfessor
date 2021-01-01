@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="06e45719-d76b-4aa2-8cc9-e45f79342398" name="Default Changelist" comment="feat:server create" />
+    <list default="true" id="06e45719-d76b-4aa2-8cc9-e45f79342398" name="Default Changelist" comment="feat:server create">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +33,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../web2_node_learn" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -63,6 +66,8 @@
       <workItem from="1609375532398" duration="50000" />
       <workItem from="1609389268083" duration="3042000" />
       <workItem from="1609421115382" duration="48000" />
+      <workItem from="1609421987949" duration="2127000" />
+      <workItem from="1609469490554" duration="4067000" />
     </task>
     <task id="LOCAL-00001" summary="feat:server create">
       <created>1609075735604</created>
