@@ -9,7 +9,7 @@
   <aside id="aside">
     <div id="logo">
       <h1 class="blind">To.Professor</h1>
-      <a href="/main"><img src="3.png"/></a>
+      <a href="/main"><img src="/?png=3"/></a>
     </div>
     <section id="list">
       <h2 class="blind">글목록</h2>
@@ -32,13 +32,13 @@
     <h2 class="blind">글작성</h2>
     <form action="/createPage" method="POST" class="content-form">
       <div id="content-info">
-        <input type="text" required maxlength="10" placeholder="NAME" id="content-name"/>
-        <input type="password" placeholder="password" id="content-pw"/>
+        <input type="text" required maxlength="10" placeholder="NAME" id="content-name" name="name"/>
+        <input type="password" placeholder="password" id="content-pw" name="pw"/>
         <span>For delete</span>
         <input type="submit" value="Write" id="content-submit"/>
       </div>
       <div id="content-content">
-        <textarea id="content-description"></textarea>
+        <textarea id="content-description" name="desc"></textarea>
       </div>
     </form>
   </main>
