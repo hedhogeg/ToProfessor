@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+html {
+  background-color: floralwhite;
+}
 .blind {
   display: none;
 }
@@ -12,18 +15,30 @@ body {
   height: 100vh;
 }
 #aside {
+  min-width: 250px;
+  max-width: 400px;
   flex: 1;
   border-right: 1px solid black;
 }
 #logo {
   width: auto;
   height: 100px;
+  text-align: center;
+  position: relative;
+}
+#logo img {
+  width: 90%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
 }
 .uplist {
   display: flex;
   height: 70px;
-  background-color: rgb(255, 255, 230);
-  border: 1px solid lightgray;
+  background-color: cornsilk;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
 }
 .time {
   flex: 1;
@@ -43,10 +58,15 @@ body {
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 2px;
+  width: 163.2px;
+  height: 34px;
+  overflow: hidden;
 }
 .preview {
   color: gray;
   overflow: hidden;
+  width: 163.2px;
+  height: 21.33px;
 }
 #main {
   flex: 3;
@@ -63,8 +83,10 @@ body {
   font-size: 30px;
   width: 200px;
   height: 50px;
-  border: 2px solid black;
+  border: none;
   border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.25);
+  background-color: whitesmoke;
   text-align: center;
 }
 #content-container {
@@ -81,10 +103,17 @@ body {
 }
 #content-time {
   margin: 0 20px;
+  opacity: .7;
 }
 #content-pw {
+  height: 25px;
+  padding-top: 4px;
   margin: 0 20px;
   vertical-align: bottom;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.25);
+  background-color: whitesmoke;
 }
 #content-pw:focus {
   outline: none;
@@ -96,20 +125,31 @@ body {
   position: absolute;
   right: 30px;
   top: 20px;
+  border: none;
+  background-color: lightgoldenrodyellow;
+  box-shadow: 0 2px 4px rgba(0,0,0,.25);
   border-radius: 5px;
   cursor: pointer;
+}
+#content-submit:active {
+  transform: scale(.98);
+}
+#content-submit:focus {
+  outline: none;
 }
 #content-content {
   margin: 30px 10px 0 0;
   height: 80%;
 }
 #content-description {
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,.25);
   width: 100%;
   height: 100%;
-  border: 1px solid black;
   border-radius: 10px;
   padding: 10px;
   font-size: 20px;
+  background-color: whitesmoke;
 }
 #how-to-use {
   width: 700px;

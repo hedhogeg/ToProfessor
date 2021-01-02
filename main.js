@@ -2,15 +2,6 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var qs = require('querystring');
-var mysql = require('mysql');
-
-var db = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : '123456',
-    database : 'guestbook'
-});
-db.connect();
 
 
 
@@ -74,5 +65,3 @@ var server = http.createServer(function (request, response){
 
 
 server.listen(3000);
-
-db.end();
