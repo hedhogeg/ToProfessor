@@ -145,7 +145,6 @@ var server = http.createServer(function (request, response){
             var desc = post.desc;
 
             let liC = fs.readdirSync('./data');
-            console.log(liC)
             if (!liC[0]){
                 var num = 1
             }

@@ -3,6 +3,7 @@
 }
 html {
   background-color: floralwhite;
+  text-decoration: none;
 }
 .blind {
   display: none;
@@ -33,6 +34,9 @@ body {
   top: 50%;
   transform: translateY(-50%) translateX(-50%);
 }
+#list a {
+  text-decoration: none;
+}
 .uplist {
   display: flex;
   height: 70px;
@@ -40,8 +44,12 @@ body {
   border-top: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
 }
+#uplistTime {
+  color: transparent;
+}
 .time {
   flex: 1;
+  color: black;
   text-align: center;
   line-height: 24px;
   padding: 10px 5px;
@@ -49,12 +57,13 @@ body {
 }
 .content {
   padding: 5px 15px;
-  flex: 4;
+  flex: 3;
   display: flex;
   flex-direction: column;
   cursor: pointer;
 }
 .id {
+  color: black;
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 2px;
