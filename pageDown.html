@@ -1,0 +1,36 @@
+</main>
+<div id="how-to-use" class="hide">
+<span class="js-exit exit">✖</span>
+</div>
+</body>
+<script>
+  const form = document.querySelector(".content-form")
+  const inputPW = form.querySelector("#content-pw")
+  const howToUse = document.querySelector("#how-to-use")
+  const content = document.querySelector("#js-content")
+  const exit = howToUse.querySelector(".js-exit")
+  function handleOpen() {
+  howToUse.classList.remove("hide")
+  }
+  function handleExit() {
+  howToUse.classList.add("hide")
+  }
+  function handleHowTo() {
+  content.addEventListener("click",handleOpen)
+  exit.addEventListener("click",handleExit)
+  }
+  function handlekeydown() {
+  if (event.keyCode == 13) {
+    event.preventDefault()
+  }
+  }
+  function enterlock() {
+  inputPW.addEventListener("keydown",handlekeydown)
+  }
+  function init() {
+  enterlock()
+  handleHowTo()
+  }
+  init()
+</script>
+</html>

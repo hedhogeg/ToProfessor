@@ -17,25 +17,114 @@ var server = http.createServer(function (request, response){
             })
         }
         else if (queryData.png){
-            fs.readFile(`./data/${queryData.png}.png`, function (err, data) {
+            fs.readFile(`./${queryData.png}.png`, function (err, data) {
                 response.writeHead(200, {'Content-Type': 'image/png'});
                 response.end(data)
             })
         }
         else {
-            fs.readFile(`./main.html`, 'utf-8', function (err, data) {
-                response.writeHead(200, {'Content-Type': 'text/html'});
-                response.end(data);
-            })
-        }}
-    else if (pathname === '/page'){
-        fs.readFile(`./page.html`, 'utf-8', function (err, data){
-            //
-            //이름, 파일 리스트 data 에 삽입
-            //
+          var data = fs.readFileSync(`./mainUp.html`, 'utf-8')
+
+          let list = fs.readdirSync('./data')
+          for (var i=0; i < list.length; i++){
+            var numLi = list[i]
+            var arr = fs.readdirSync(`./data/${numLi}`)
+            var id = arr.filter(i => i !='pw.txt' && i !='time.txt')[0].slice(0,-4)
+            var time = ''
+            var desc = ''
+            time += fs.readFileSync(`./data/${numLi}/time.txt`)
+            desc += fs.readFileSync(`./data/${numLi}/${id}.txt`)
+            data +=`
+            <a href="/page/${numLi}">
+              <div id="${numLi}" class="uplist">
+                <div class="time">
+                  ${time}
+                </div>
+                <div class="content" id="js-content">
+                  <div class="id">
+                    ${id}
+                  </div>
+                  <div class="preview">
+                    ${desc}
+                  </div>
+                </div>
+              </div>
+            </a>  
+            `}
+
+            data += fs.readFileSync(`./mainDown.html`, 'utf-8')
+
             response.writeHead(200, {'Content-Type' : 'text/html'});
             response.end(data);
-        })
+            }
+        }
+    else if (pathname.slice(0,5) === `/page`){
+      var num = pathname.slice(6)
+
+      var data = fs.readFileSync(`./pageUp.html`, 'utf-8')
+
+      let list = fs.readdirSync('./data')
+      for (var i=0; i < list.length; i++){
+        var numLi = list[i]
+        var arr = fs.readdirSync(`./data/${numLi}`)
+        var id = arr.filter(i => i !='pw.txt' && i !='time.txt')[0].slice(0,-4)
+        var time = ''
+        var desc = ''
+        time += fs.readFileSync(`./data/${numLi}/time.txt`)
+        desc += fs.readFileSync(`./data/${numLi}/${id}.txt`)
+        data +=`
+        <a href="/page/${numLi}">
+          <div id="${numLi}" class="uplist">
+            <div class="time">
+              ${time}
+            </div>
+            <div class="content" id="js-content">
+              <div class="id">
+                ${id}
+              </div>
+              <div class="preview">
+                ${desc}
+              </div>
+            </div>
+          </div>
+        </a>  
+        `
+      }
+
+      var arrC = fs.readdirSync(`./data/${num}`)
+      var idC = arrC.filter(i => i !='pw.txt' && i !='time.txt')[0].slice(0,-4)
+      var timeC = ''
+      var descC = ''
+      timeC += fs.readFileSync(`./data/${num}/time.txt`)
+      descC += fs.readFileSync(`./data/${num}/${idC}.txt`)
+
+      data += `
+        </section>
+      </aside>
+      <main id="main">
+        <h2 class="blind">글작성</h2>
+        <div id="content-info">
+          <div id="content-name">
+            ${idC}
+          </div>
+          <div id="content-container">
+            <span id="content-time">${timeC}</span>
+            <form action="/deletePage" method="POST" class="content-form">
+              <input type="password" placeholder="password" id="content-pw" name="pw"/>
+              <input type="submit" value="Delete" id="content-submit"/>
+              <input type="text" value="${num}" name="pageNum" class="hide"/>
+            </form>
+          </div>
+        </div>
+        <div id="content-content">
+          <div id="content-description">${descC}</div>
+        </div>
+      `
+
+      data += fs.readFileSync(`./pageDown.html`, 'utf-8')
+
+      response.writeHead(200, {'Content-Type' : 'text/html'});
+      response.end(data);
     }
     else if (pathname === '/createPage'){
         const date = new Date()
