@@ -1,0 +1,42 @@
+</main>
+<div id="how-to-use" class="hide">
+  <span class="js-exit exit">✖</span>
+  <div class="howToUseText howToUseTitle">How To Use</div>
+  <div class="howToUseText">교수님께 방명록을 쓸 수 있는 공간입니다.</div>
+  <div class="howToUseText">좌상단 로고를 클릭 시 방명록을 쓰는 페이지로 넘어갑니다.</div>
+  <div class="howToUseText">글 작성시 본인의 이름과 암호를 입력 후 글을 작성합니다.</div>
+  <div class="howToUseText">암호는 글 삭제시 본인 확인 용도로 사용됩니다.</div>
+  <div class="howToUseText">글을 수정해야 한다면, 삭제 후 다시 작성하시면 됩니다.^^</div>
+</div>
+</body>
+<script>
+  const form = document.querySelector(".content-form")
+  const inputPW = form.querySelector("#content-pw")
+  const howToUse = document.querySelector("#how-to-use")
+  const content = document.querySelector("#js-content")
+  const exit = howToUse.querySelector(".js-exit")
+  function handleOpen() {
+  howToUse.classList.remove("hide")
+  }
+  function handleExit() {
+  howToUse.classList.add("hide")
+  }
+  function handleHowTo() {
+  content.addEventListener("click",handleOpen)
+  exit.addEventListener("click",handleExit)
+  }
+  function handlekeydown() {
+  if (event.keyCode == 13) {
+    event.preventDefault()
+  }
+  }
+  function enterlock() {
+  inputPW.addEventListener("keydown",handlekeydown)
+  }
+  function init() {
+  enterlock()
+  handleHowTo()
+  }
+  init()
+</script>
+</html>
