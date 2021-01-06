@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06e45719-d76b-4aa2-8cc9-e45f79342398" name="Default Changelist" comment="feat:server create">
+      <change afterPath="$PROJECT_DIR$/data/1/   .txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/1/pw.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/1/time.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/2/!!~!@#$%^&amp;.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/2/pw.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/2/time.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/File/3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/1/pw.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/1/time.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/1/windfall.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/31/hedhogeg.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/31/pw.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/31/time.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/File/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainDown.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/mainDown.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/mainUp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page.css" beforeDir="false" afterPath="$PROJECT_DIR$/File/page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageDown.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/pageDown.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/pageUp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTML/mainDown.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/mainDown.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +84,7 @@
       <workItem from="1609592367793" duration="6763000" />
       <workItem from="1609600013475" duration="130000" />
       <workItem from="1609928980954" duration="8000" />
+      <workItem from="1609933845531" duration="757000" />
     </task>
     <task id="LOCAL-00001" summary="feat:server create">
       <created>1609075735604</created>
