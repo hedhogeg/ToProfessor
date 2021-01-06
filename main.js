@@ -153,7 +153,7 @@ var server = http.createServer(function (request, response){
             }
 
             fs.mkdirSync(`./data/${num}`);
-            fs.writeFileSync(`./data/${num}/${name}.txt`, desc, 'utf-8');
+            fs.writeFileSync(`./data/${num}/${name}.txt`, desc.replace(/\n/g,"<br>"), 'utf-8');
             fs.writeFileSync(`./data/${num}/time.txt`, currentTime);
             fs.writeFile(`./data/${num}/pw.txt`, pw, function (err){
                 response.writeHead(302,{Location : `/page/${num}`});
