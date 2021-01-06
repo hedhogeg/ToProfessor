@@ -4,7 +4,7 @@
   <h2 class="blind">글작성</h2>
   <form action="/createPage" method="POST" class="content-form">
     <div id="content-info">
-      <input type="text" required maxlength="10" placeholder="NAME" id="content-name" name="name" onKeyup="this.value=this.value.replace(/time|pw/g,'fuck')"/>
+      <input type="text" required maxlength="10" placeholder="NAME" id="content-name" name="name" onkeyup="this.value=this.value.replace(/time|pw/g,'fuck').replace(/<|>|\*|:/,'')"/>
       <input type="password" placeholder="password" id="content-pw" name="pw"/>
       <span>For delete</span>
       <input type="submit" value="Write" id="content-submit"/>
@@ -16,6 +16,12 @@
 </main>
 <div id="how-to-use" class="hide">
   <span class="js-exit exit">✖</span>
+  <div class="howToUseText howToUseTitle">How To Use</div>
+  <div class="howToUseText">교수님께 방명록을 쓸 수 있는 공간입니다.</div>
+  <div class="howToUseText">좌상단 로고를 클릭 시 방명록을 쓰는 페이지로 넘어갑니다.</div>
+  <div class="howToUseText">글 작성시 본인의 이름과 암호를 입력 후 글을 작성합니다.</div>
+  <div class="howToUseText">암호는 글 삭제시 본인 확인 용도로 사용됩니다.</div>
+  <div class="howToUseText">글을 수정해야 한다면, 삭제 후 다시 작성하시면 됩니다.^^</div>
 </div>
 </body>
 <script>
@@ -35,8 +41,17 @@ function handleHowTo() {
   content.addEventListener("click",handleOpen)
   exit.addEventListener("click",handleExit)
 }
-function handleKeyDown() {
+function handleKeyDown(event) {
   if (event.keyCode == 13) {
+    event.preventDefault()
+  }
+  else if (event.keyCode == 220) {
+    event.preventDefault()
+  }
+  else if (event.keyCode == 191) {
+    event.preventDefault()
+  }
+  else if (event.keyCode == 222) {
     event.preventDefault()
   }
 }

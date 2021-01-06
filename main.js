@@ -171,7 +171,6 @@ var server = http.createServer(function (request, response){
             var pw = dtpost.pw;
             num += dtpost.pageNum;
             fs.readFile(`./data/${num}/pw.txt`, 'utf-8', function (err, data) {
-                console.log(data, pw);
                 if (pw == data){
                     deleteFolderRecursive(`./data/${num}`);
                     response.writeHead(302, {Location : `/`});
