@@ -20,6 +20,7 @@ body {
   max-width: 400px;
   flex: 1;
   border-right: 1px solid black;
+  height: 100vh;
 }
 #logo {
   width: auto;
@@ -33,6 +34,10 @@ body {
   left: 50%;
   top: 50%;
   transform: translateY(-50%) translateX(-50%);
+}
+#list {
+  height: 80%;
+  overflow: auto;
 }
 #list a {
   text-decoration: none;
@@ -165,12 +170,10 @@ body {
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   z-index: 1;
-  background-color: white;
+  background-color: rgb(255, 249, 230);
   border-radius: 10px;
   box-shadow: 0 1px 0 10000px rgba(0,0,0,.4);
-}
-.hide {
-  display: none;
+  padding: 3%;
 }
 .exit {
   color: gray;
@@ -183,4 +186,16 @@ body {
   line-height: 27px;
   text-align: center;
   cursor: pointer;
+}
+.howToUseText {
+  height: 15%;
+  font-size: 20px;
+}
+.howToUseTitle {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.hide {
+  display: none;
 }
