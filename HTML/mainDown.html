@@ -4,7 +4,7 @@
   <h2 class="blind">글작성</h2>
   <form action="/createPage" method="POST" class="content-form">
     <div id="content-info">
-      <input type="text" required maxlength="10" placeholder="NAME" id="content-name" name="name"/>
+      <input type="text" required maxlength="10" placeholder="NAME" id="content-name" name="name" onKeyup="this.value=this.value.replace(/time|pw/g,'fuck')"/>
       <input type="password" placeholder="password" id="content-pw" name="pw"/>
       <span>For delete</span>
       <input type="submit" value="Write" id="content-submit"/>
