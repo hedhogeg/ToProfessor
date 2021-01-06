@@ -10,58 +10,61 @@ var server = http.createServer(function (request, response){
     if (pathname === '/main'){pathname = '/'}
 
     if (pathname === '/'){
+      var data = fs.readFileSync(`./HTML/mainUp.html`, 'utf-8')
+
+      let list = fs.readdirSync('./data')
+      for (var i=0; i < list.length; i++){
+        var numLi = list[i]
+        var arr = fs.readdirSync(`./data/${numLi}`)
+        var id = arr.filter(i => i !='pw.txt' && i !='time.txt')[0].slice(0,-4)
+        var time = ''
+        var desc = ''
+        time += fs.readFileSync(`./data/${numLi}/time.txt`)
+        desc += fs.readFileSync(`./data/${numLi}/${id}.txt`)
+        data +=`
+        <a href="/page/${numLi}">
+          <div id="${numLi}" class="uplist">
+            <div class="time">
+              ${time}
+            </div>
+            <div class="content" id="js-content">
+              <div class="id">
+                ${id}
+              </div>
+              <div class="preview">
+                ${desc}
+              </div>
+            </div>
+          </div>
+        </a>`
+      }
+    data += fs.readFileSync(`./HTML/mainDown.html`, 'utf-8')
+
+    response.writeHead(200, {'Content-Type' : 'text/html'});
+    response.end(data);
+    }
+    else if (pathname === '/File'){
         if (queryData.css){
-            fs.readFile(`./${queryData.css}.css`, 'utf-8', function (err, data){
+            fs.readFile(`./File/${queryData.css}.css`, 'utf-8', function (err, data){
                 response.writeHead(200, {'Content-Type' : 'text/css'});
                 response.end(data)
             })
         }
         else if (queryData.png){
-            fs.readFile(`./${queryData.png}.png`, function (err, data) {
+            fs.readFile(`./File/${queryData.png}.png`, function (err, data) {
                 response.writeHead(200, {'Content-Type': 'image/png'});
                 response.end(data)
             })
         }
         else {
-          var data = fs.readFileSync(`./mainUp.html`, 'utf-8')
-
-          let list = fs.readdirSync('./data')
-          for (var i=0; i < list.length; i++){
-            var numLi = list[i]
-            var arr = fs.readdirSync(`./data/${numLi}`)
-            var id = arr.filter(i => i !='pw.txt' && i !='time.txt')[0].slice(0,-4)
-            var time = ''
-            var desc = ''
-            time += fs.readFileSync(`./data/${numLi}/time.txt`)
-            desc += fs.readFileSync(`./data/${numLi}/${id}.txt`)
-            data +=`
-            <a href="/page/${numLi}">
-              <div id="${numLi}" class="uplist">
-                <div class="time">
-                  ${time}
-                </div>
-                <div class="content" id="js-content">
-                  <div class="id">
-                    ${id}
-                  </div>
-                  <div class="preview">
-                    ${desc}
-                  </div>
-                </div>
-              </div>
-            </a>  
-            `}
-
-            data += fs.readFileSync(`./mainDown.html`, 'utf-8')
-
-            response.writeHead(200, {'Content-Type' : 'text/html'});
-            response.end(data);
-            }
+            response.writeHead(404);
+            response.end("not found")
         }
+    }
     else if (pathname.slice(0,5) === `/page`){
-      var num = pathname.slice(6)
+      let num = pathname.slice(6)
 
-      var data = fs.readFileSync(`./pageUp.html`, 'utf-8')
+      var data = fs.readFileSync(`./HTML/pageUp.html`, 'utf-8')
 
       let list = fs.readdirSync('./data')
       for (var i=0; i < list.length; i++){
@@ -108,7 +111,7 @@ var server = http.createServer(function (request, response){
             ${idC}
           </div>
           <div id="content-container">
-            <span id="content-time">${timeC}</span>
+            <span id="content-time">${timeC.slice(0,8)+". "+timeC.slice(12)}</span>
             <form action="/deletePage" method="POST" class="content-form">
               <input type="password" placeholder="password" id="content-pw" name="pw"/>
               <input type="submit" value="Delete" id="content-submit"/>
@@ -121,52 +124,62 @@ var server = http.createServer(function (request, response){
         </div>
       `
 
-      data += fs.readFileSync(`./pageDown.html`, 'utf-8')
+      data += fs.readFileSync(`./HTML/pageDown.html`, 'utf-8')
 
       response.writeHead(200, {'Content-Type' : 'text/html'});
       response.end(data);
     }
     else if (pathname === '/createPage'){
         const date = new Date()
-        currentTime = getTime(date).join(":")
-        console.log(currentTime)
+
+        currentTime = getTime(date)
+
         var data = '';
         request.on('data', function (dt){
             data += dt;
         })
         request.on('end', function (){
             var post = qs.parse(data);
-            var name = post.name
-            var pw = post.pw
-            var desc = post.desc
+            var name = post.name;
+            var pw = post.pw;
+            var desc = post.desc;
 
-            var num=31
-            fs.mkdirSync(`./data/${num}`)
-            fs.writeFileSync(`./data/${num}/${name}.txt`, desc, 'utf-8')
-            fs.writeFileSync(`./data/${num}/time.txt`, currentTime)
+            let liC = fs.readdirSync('./data');
+            console.log(liC)
+            if (!liC[0]){
+                var num = 1
+            }
+            else {
+                var num = parseInt(liC[liC.length - 1]) + 1;
+            }
+
+            fs.mkdirSync(`./data/${num}`);
+            fs.writeFileSync(`./data/${num}/${name}.txt`, desc, 'utf-8');
+            fs.writeFileSync(`./data/${num}/time.txt`, currentTime);
             fs.writeFile(`./data/${num}/pw.txt`, pw, function (err){
-                response.writeHead(302,{Location : `/page`});
+                response.writeHead(302,{Location : `/page/${num}`});
                 response.end();
         })})
     }
     else if (pathname === '/deletePage'){
         let pwdata='';
-        let num = 31;
+        let num = '';
         request.on('data', function (pwdt){
             pwdata += pwdt;
         })
         request.on('end', function (){
-            var pwpost=qs.parse(pwdata);
-            var pw = pwpost.pw
+            var dtpost=qs.parse(pwdata);
+            var pw = dtpost.pw;
+            num += dtpost.pageNum;
             fs.readFile(`./data/${num}/pw.txt`, 'utf-8', function (err, data) {
-                console.log(data,pw)
+                console.log(data, pw);
                 if (pw == data){
-                    deleteFolderRecursive(`./data/${num}`)
+                    deleteFolderRecursive(`./data/${num}`);
                     response.writeHead(302, {Location : `/`});
                     response.end();
                 }
                 else{
-                    response.writeHead(302, {Location : `/page`});
+                    response.writeHead(302, {Location : `/page/${num}`});
                     response.end();
                 }
             })
@@ -186,11 +199,11 @@ function getTime(date) {
     const day = date.getDate()
     const hours = date.getHours()
     const minutes = date.getMinutes()
-    return [`${year - 2000}`,
-        `${month < 10 ? `0${month}` : month}`,
-        `${day < 10 ? `0${day}` : day}`,
-        `${hours < 10 ? `0${hours}` : hours}`,
-        `${minutes < 10 ? `0${minutes}` : minutes}`]
+    return `${year - 2000}`+"."+
+        `${month < 10 ? `0${month}` : month}`+"."+
+        `${day < 10 ? `0${day}` : day}`+"<br>"+
+        `${hours < 10 ? `0${hours}` : hours}`+":"+
+        `${minutes < 10 ? `0${minutes}` : minutes}`
 }
 
 var deleteFolderRecursive = function(path) {
