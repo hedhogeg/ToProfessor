@@ -1,0 +1,53 @@
+</section>
+</aside>
+<main id="main">
+  <h2 class="blind">글작성</h2>
+  <form action="/createPage" method="POST" class="content-form">
+    <div id="content-info">
+      <input type="text" required maxlength="10" placeholder="NAME" id="content-name" name="name"/>
+      <input type="password" placeholder="password" id="content-pw" name="pw"/>
+      <span>For delete</span>
+      <input type="submit" value="Write" id="content-submit"/>
+    </div>
+    <div id="content-content">
+      <textarea id="content-description" name="desc"></textarea>
+    </div>
+  </form>
+</main>
+<div id="how-to-use" class="hide">
+  <span class="js-exit exit">✖</span>
+</div>
+</body>
+<script>
+const form = document.querySelector(".content-form")
+const inputName = form.querySelector("#content-name")
+const inputPW = form.querySelector("#content-pw")
+const howToUse = document.querySelector("#how-to-use")
+const content = document.querySelector("#js-content")
+const exit = howToUse.querySelector(".js-exit")
+function handleOpen() {
+  howToUse.classList.remove("hide")
+}
+function handleExit() {
+  howToUse.classList.add("hide")
+}
+function handleHowTo() {
+  content.addEventListener("click",handleOpen)
+  exit.addEventListener("click",handleExit)
+}
+function handleKeyDown() {
+  if (event.keyCode == 13) {
+    event.preventDefault()
+  }
+}
+function enterlock() {
+  inputName.addEventListener("keydown",handleKeyDown)
+  inputPW.addEventListener("keydown",handleKeyDown)
+}
+function init() {
+  enterlock()
+  handleHowTo()
+}
+init()
+</script>
+</html>
